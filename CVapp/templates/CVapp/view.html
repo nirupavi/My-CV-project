@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Details</title>
+    <style>
+          p{
+             font-size : 20px;
+             color : purple;
+           }
+    </style>
+</head>
+<body>
+      <div class="container">
+          <h1 class="alert-danger text-center"> Resume </h1>
+          <div class="row">
+              <div class="col-sm-10 shadow p-5 offset-sm-1">
+
+                  <p class="float-end"> Application number: {{user.id}}</p>
+                  <img src="{{user.profile_image.url}}" alt="" class="img-fluid img-thumbnail rounded float-right mt-2"
+                  width="150" height="150">
+                  <p> Name : {{user.name}}</p>
+                  <p> Address : {{user.locality}},{{user.city}},{{user.state}}-{{user.pin}}</p>
+                  <p> Mobile No. : {{user.mobile}}</p>
+                  <p> Email ID : {{user.email}}</p>
+                  <p> School : {{user.School}}</p>
+                  <p> School marks : {{user.School_marks}}</p>
+                  <p> Degree : {{user.Degree}}</p>
+                  <p> University : {{user.University}}</p>
+                  <p> Degree Percentage : {{user.Degree_percentage}}</p>
+                  <p> Previous Roll : {{user.previous_roll}}</p>
+                  <p> Previous Experience : {{user.previous_experience}}</p>
+                  <p> Tech Skill : {{user.Tech_skill}}</p>
+                  <p> Job city : {{user.job_city}}</p>
+                  <p> Attachment : <a href="{{user.file.url}}"> Download file </a></p>
+                  <a href="cvmaker" class="btn btn-primary" style="font-size:20px;"> Create CV </a>
+
+              </div>
+          </div>
+      </div>
+
+
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+             crossorigin="anonymous"></script>
+</body>
+</html>
