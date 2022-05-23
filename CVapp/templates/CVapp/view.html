@@ -13,6 +13,9 @@
              font-size : 20px;
              color : purple;
            }
+          a{
+            font-size : 20px;
+          }
     </style>
 </head>
 <body>
@@ -38,9 +41,16 @@
                   <p> Tech Skill : {{user.Tech_skill}}</p>
                   <p> Job city : {{user.job_city}}</p>
                   <p> Attachment : <a href="{{user.file.url}}"> Download file </a></p>
-                  <a href="cvmaker" class="btn btn-primary" style="font-size:20px;"> Create CV </a>
+
+                  <a href="/logout" class=" btn btn-danger text-center" style="font-size:20px;">logout</a>
 
               </div>
+              <a href="cvmaker" class="btn btn-primary " style="font-size:15px;" > Create CV </a>
+              <a href="{% url 'updatedata' user.id %}" style="font-size:15px; margin-top: 10px;" class="btn btn-info">Edit Profile</a>
+              <form  action="{% url 'deletedata' user.id %}" method="POST" >
+                {% csrf_token %}
+                <input type="submit" class="btn btn-warning" style="font-size:15px; margin-top: 10px;" value="Delete Profile">
+              </form>
           </div>
       </div>
 
