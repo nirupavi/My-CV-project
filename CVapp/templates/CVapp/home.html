@@ -32,11 +32,14 @@
                </form>
             </div>
             <div class="col-sm-4">
-                <h4 class="text-center mb-3"><u> Candidate list </u></h4>
+                <h4 class="text-center mb-3"><u> Profile list </u></h4>
                 {% for user in users %}
                   {{user.id}}:<a href="{% url 'resumeview' user.id %}"> {{user.name}}</a><br>
                 {% endfor %}
+
             </div>
+
+            </form>
         </div>
      </div>
 
