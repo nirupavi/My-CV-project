@@ -21,6 +21,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cvmaker',views.Homeview.as_view(),name='cvmaker'),
+    path('signup/',views.signup_page,name='signup'),
+    path('login/',views.user_login,name='login'),
+    path('logout/', views.logout_page,name='logout'),
+    path('changepass/',views.change_pass,name='changepass'),
+    path('cvmaker/',views.Homeview.as_view(),name='cvmaker'),
     path('<int:pk>',views.resumeview.as_view(),name='resumeview'),
+    path('delete/<int:id>/',views.delete_data,name='deletedata'),
+    path('<int:id>/',views.update_data,name='updatedata'),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
