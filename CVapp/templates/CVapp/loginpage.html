@@ -21,7 +21,12 @@
                padding: 0 7em 2em 0;
                border-width: 2px;
              }
-
+         .center {
+                  display: block;
+                  margin-left: auto;
+                  margin-right: auto;
+                  width: 20%;
+                }
 
     </style>
 
@@ -29,8 +34,11 @@
 </head>
      <link rel="stylesheet" href="{% static 'style.css' %}">
      <h3 class="text-center text-primary alert alert-danger">Create a professional CV</h3>
+
 <body>
 
+   <img src="https://static.jobscan.co/blog/uploads/Top-Resume-Keywords-1-600x318.webp" alt="Resume"
+        class="center"  >
    <form action="" method="POST" class="alert alert-info text-center" novalidate>
        {% csrf_token %}
        {{form.as_p}}
@@ -39,7 +47,7 @@
      <p class="text-center alert alert-info mt-3"> New to login</p>
     <a class="alert alert-danger" href="/signup">signup</a><hr>
 
-    <a class="alert alert-danger" href="/changepass">Changepassword</a><br>
+
 
 
 </body>
