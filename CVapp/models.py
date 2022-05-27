@@ -5,7 +5,7 @@ from django.db import models
 
 
 class Resume(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100,unique=True)
     email = models.EmailField(max_length=100)
     mobile = models.PositiveIntegerField()
     locality = models.CharField(max_length=100)
@@ -24,3 +24,6 @@ class Resume(models.Model):
     profile_image = models.ImageField(upload_to='profileimg', blank=True)
     file = models.FileField(upload_to='doc',blank=True)
 
+
+    def __str__(self):
+        return self.name
