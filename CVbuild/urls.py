@@ -29,4 +29,10 @@ urlpatterns = [
     path('<int:pk>',views.resumeview.as_view(),name='resumeview'),
     path('delete/<int:id>/',views.delete_data,name='deletedata'),
     path('<int:id>/',views.update_data,name='updatedata'),
+    path('Resumeapi/',views.Resumelist.as_view()),
+    path('Resumeapicreate/',views.Resumecreate.as_view()),
+    path('Resumeapiretrive/<int:pk>',views.Resumeretrieve.as_view()),
+    path('Resumeapiupdate/<int:pk>',views.ResumeUpdate.as_view()),
+    path('Resumeapidelete/<int:pk>',views.Resumedelete.as_view()),
+
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
