@@ -7,6 +7,10 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib.auth import authenticate,login,logout,update_session_auth_hash
 from django.contrib.auth.forms import AuthenticationForm,PasswordChangeForm
+from .Seriliazer import Resumeserialiazer
+from rest_framework.generics import GenericAPIView
+from rest_framework.mixins import ListModelMixin, CreateModelMixin , RetrieveModelMixin, UpdateModelMixin,DestroyModelMixin
+
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -101,4 +105,41 @@ def change_pass(request):
     else:
       fm = PasswordChangeForm(user=request.user)
     return render(request,'CVapp/changepassword.html',{'form':fm})
+
+# API views using generic API with mixins
+
+class Resumelist(GenericAPIView,ListModelMixin):
+    queryset = Resume.objects.all()
+    serializer_class = Resumeserialiazer
+
+    def get(self,request,*args,**kwargs):
+        return self.list(request,*args,**kwargs)
+
+class Resumecreate(GenericAPIView,CreateModelMixin):
+    queryset = Resume.objects.all()
+    serializer_class = Resumeserialiazer
+
+    def post(self,request,*args,**kwargs):
+        return self.create(request,*args,**kwargs)
+
+class Resumeretrieve(GenericAPIView,RetrieveModelMixin):
+    queryset = Resume.objects.all()
+    serializer_class = Resumeserialiazer
+
+    def get(self,request,*args,**kwargs):
+        return self.retrieve(request,*args,**kwargs)
+
+class ResumeUpdate(GenericAPIView,UpdateModelMixin):
+    queryset = Resume.objects.all()
+    serializer_class = Resumeserialiazer
+
+    def put(self, request, *args, **kwargs):
+        return self.update(request,*args,**kwargs)
+
+class Resumedelete(GenericAPIView,DestroyModelMixin):
+    queryset = Resume.objects.all()
+    serializer_class = Resumeserialiazer
+
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request,*args,**kwargs)
 
