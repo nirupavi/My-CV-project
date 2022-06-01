@@ -10,10 +10,15 @@ from django.contrib.auth.forms import AuthenticationForm,PasswordChangeForm
 from .Seriliazer import Resumeserialiazer
 from rest_framework.generics import GenericAPIView
 from rest_framework.mixins import ListModelMixin, CreateModelMixin , RetrieveModelMixin, UpdateModelMixin,DestroyModelMixin
+from rest_framework.authentication import BaseAuthentication
+from rest_framework.permissions import IsAuthenticated
+from CVapp.middleware import Time_middleware
+from django.utils.decorators import method_decorator
 
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+
 def signup_page(request):
     if request.method == 'POST':
         fm = signupform(request.POST)
@@ -32,6 +37,8 @@ def signup_page(request):
         print('This is get method')
     return render(request,'CVapp/signup.html',{'form':fm})
 
+
+@method_decorator(Time_middleware) # custome middleware define here
 def user_login(request):
     if request.method == 'POST':
         fm = AuthenticationForm(request=request,data=request.POST)
@@ -59,6 +66,7 @@ def logout_page(request):
     return HttpResponseRedirect('/login')
 
 class Homeview(View):
+
     def get(self,request):
         form = ResumeForm()
         users = Resume.objects.all()
@@ -112,8 +120,10 @@ class Resumelist(GenericAPIView,ListModelMixin):
     queryset = Resume.objects.all()
     serializer_class = Resumeserialiazer
 
+
     def get(self,request,*args,**kwargs):
         return self.list(request,*args,**kwargs)
+
 
 class Resumecreate(GenericAPIView,CreateModelMixin):
     queryset = Resume.objects.all()
